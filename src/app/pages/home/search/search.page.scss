@@ -1,0 +1,19 @@
+
+.items_norm {
+    background: transparent !important;
+
+    ion-list-header {
+        position: relative;
+
+        ion-icon {
+            position: absolute;
+            font-size: 22px;
+            right: 12px;
+            top: 10px;
+        }
+    }
+
+    ion-item {
+        --background: transparent !important;
+    }
+}

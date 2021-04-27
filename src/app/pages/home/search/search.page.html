@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Buscador de Marcas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!-- Busqueda -->
+<ion-list class="items_norm" *ngIf="data">
+  <ion-list-header>
+    <ion-text>Elementos</ion-text>
+  </ion-list-header>
+
+  <ion-item *ngFor="let items of data" (click)="viewitem(items)">
+    <ion-thumbnail slot="start">
+      <img src="https://png.pngtree.com/png-vector/20191021/ourlarge/pngtree-steering-wheel-icon-simple-style-png-image_1837200.jpg" alt="car-img">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+      {{items.nombre}}
+      </h3>
+      <p>
+       #{{items.idMarca}}
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+<!-- Busqueda -->
+</ion-content>

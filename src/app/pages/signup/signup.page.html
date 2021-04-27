@@ -1,0 +1,53 @@
+<ion-content class="ion-padding">
+
+  <div class="welcome-card">
+    <ion-card class="opt-singin">
+      <ion-label routerLink="/login" routerDirection="back">Iniciar Sesión</ion-label>
+      <ion-label color="primary">Registrarse</ion-label>
+    </ion-card>
+
+    <form #form="ngForm" (ngSubmit)="signup(form.value)" style="margin-top: 15px;">
+      <ion-row style="position: relative;">
+        <ion-col>
+          <h1 class="welcome_text">
+            Vamos a
+            crear su cuenta
+          </h1>
+        </ion-col>
+      </ion-row>
+
+      <ion-card class="login_card">
+        
+        <ion-item>
+          <ion-input type="text" clearInput name="firstname" ngModel required placeholder="Tu nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" clearInput name="lastname" ngModel required placeholder="Apellidos"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-datetime placeholder="Fecha de nacimiento" format="YYYY-MM-DD" required name="birthdate" ngModel></ion-datetime>
+        </ion-item>
+  
+        <ion-item>
+          <ion-input type="email" clearInput name="email" ngModel required placeholder="Ejemplo-email@hotmail.com"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="password" clearInput name="password" ngModel required placeholder="Contraseña"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-button [disabled]="!form.valid" color="primary" expand="block" type="submit" style="font-family: 'SF Pro Display';font-weight: 400;position: relative;text-align: center;">
+            <ion-text>
+              Continuar
+            </ion-text>
+            <ion-icon [ios]="'arrow-forward-outline'" [md]="'arrow-forward-sharp'"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-card>
+    </form>
+  </div>
+
+</ion-content>

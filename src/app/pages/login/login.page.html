@@ -1,0 +1,46 @@
+<ion-content class="ion-padding">
+
+  <div class="welcome-card">
+    <ion-card class="opt-singin">
+      <ion-label color="primary">Iniciar Sesión</ion-label>
+      <ion-label routerLink="/signup" routerDirection="forward">Registrarse</ion-label>
+    </ion-card>
+
+    <form #form="ngForm" (ngSubmit)="login(form.value)" style="margin-top: 15px;">
+      <ion-row style="position: relative;">
+        <ion-col>
+          <h1 class="welcome_text">
+            Listo(a) para la acción?
+          </h1>
+        </ion-col>
+      </ion-row>
+
+      <ion-card class="login_card">
+        <ion-item class="text-lbl" lines="none">
+          <ion-label>
+           Ingresa a tu cuenta    
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="email" clearInput  [(ngModel)]="email" required name="email" placeholder="Ejemplo-email@info.com"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-input type="password" clearInput [(ngModel)]="password" required name="password" placeholder="Contraseña"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-button color="primary" expand="block" type="submit">
+            <ion-text>
+              Continuar
+            </ion-text>
+            <ion-icon [ios]="'arrow-forward-outline'" [md]="'arrow-forward-sharp'"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-card>
+    </form>
+
+  </div>
+
+</ion-content>

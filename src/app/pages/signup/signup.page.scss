@@ -1,0 +1,100 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+}
+
+ion-content.ion-padding{    
+    --background: url(../../../assets/images/background-dark-web.png) 0 0/100% 100% no-repeat;
+}
+
+.opt-singin {
+    background: transparent !important;
+    box-shadow: none;
+    margin-top: 50px;
+
+    ion-label {
+        font-size: 15px;
+
+        &:first-child {
+            margin-right: 15px;
+            color: var(--bglight);
+        }
+    }
+}
+
+.welcome_text {
+    width: 230px;
+    height: 76px;
+    font-size: 32px;
+    line-height: 37px;
+    padding-left: 2px;
+    color: #fff;
+}
+
+form {
+    position: relative;
+    height: 320px;
+    width: 100%;
+
+    .login_card {
+        background: #2b2d2f;
+        position: absolute;
+        left: -22px;
+        width: 100%;
+        margin-left: 0px !important;
+        padding: 25px 15px;
+
+        .text-lbl {
+            color: var(--bglight);
+            font-size: 18px;
+        }
+
+        ion-item {
+            --background: #2b2d2f;
+            --color: #fff;
+
+            ion-input {
+                --placeholder-color:#fff;
+                --padding-start: 0px;
+                --placeholder-font-style:12px;
+                --color:#fff;
+            }
+        }
+    }
+}
+
+.log-sn {
+    margin-top: 50px;
+    margin-left: 0px !important;
+    padding: 0 !important;
+    box-shadow: none;
+
+    ion-card-header {
+        ion-text {
+            color: #fff;
+        }
+    }
+
+    ion-card-content {
+
+        .log_fb {
+            display: inline-block;
+            background-color: #3B5998;
+            width: 70px;
+            text-align: center;
+    
+            img {
+                max-width: 25px;
+                padding: 10px 0;
+                margin: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    ion-content.ion-padding{    
+        --background: url(../../../assets/images/background-dark-sign.png) 0 0/100% 100% no-repeat;
+    }
+}

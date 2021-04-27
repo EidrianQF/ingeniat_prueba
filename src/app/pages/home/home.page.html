@@ -1,0 +1,142 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-title>
+        Bienvenido(a) De Nuevo...
+      </ion-title>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <svg (click)="presentActionSheet()" style="width:36px;height:36px;color:rgb(119, 97, 97);" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+      </svg>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+<!-- Refresh -->
+<ion-refresher color="dark" slot="fixed" (ionRefresh)="doRefresh($event)"  pullFactor="0.5" pullMin="100" pullMax="200">
+  <ion-refresher-content 
+  pullingIcon="ellipsis-horizontal"
+  refreshingSpinner="dots">
+    
+  </ion-refresher-content>
+</ion-refresher>
+<!-- Refresh -->
+
+<!-- Buscador -->
+<ion-card class="search_box">
+  <ion-card-header>
+     <ion-text>
+      Encuentra lo que estas buscando
+     </ion-text>
+  </ion-card-header>
+</ion-card>
+<!-- Buscador -->
+
+<!-- Skeletor -->
+<ion-list class="skeleton" *ngIf="!data">
+  <ion-list-header>
+    <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+  </ion-list-header>
+
+  <ion-item *ngFor="let fake of fakeData">
+    <ion-thumbnail slot="start">
+      <ion-skeleton-text></ion-skeleton-text>
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </p>
+      <p>
+        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+
+</ion-list>
+<!-- Skeletor -->
+
+<!-- Items Normales -->
+<ion-list class="items_norm" *ngIf="!hasSearch && viewItems">
+  <ion-list-header>
+    <ion-text color="light">Elementos</ion-text>
+    
+    <ion-icon [ios]="'filter-outline'" [md]="'filter-sharp'" color="light" (click)="ViewSearch()"></ion-icon>
+  </ion-list-header>
+
+  <ion-item *ngFor="let items of viewItems" style="margin-top:10px;">
+    <ion-thumbnail slot="start">
+      <img src="https://www.iconpacks.net/icons/2/free-sport-car-icon-1768-thumb.png" alt="car-img">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+      Modelo: {{items.nombreModelo}}
+      </h3>
+      <p>
+       #{{items.idModelo}} | Marca: {{items.nombreMarca}}
+      </p>
+    </ion-label>
+  </ion-item>
+
+  <!--********************** Infinite Scroll ******************************************-->
+  <ion-infinite-scroll *ngIf="!hasSearch" threshold="100px" (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando mas datos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-item *ngIf="let_end" style="text-align: center;">
+    Ya no hay mas elementos que mostrar.
+  </ion-item>
+<!--********************** Infinite Scroll ******************************************-->
+</ion-list>
+<!-- Items Normales -->
+
+<!-- Items por Busqueda -->
+<ion-list class="items_norm" *ngIf="hasSearch">
+  <ion-list-header>
+    <ion-text color="light">Filtrando por: {{searchQuery}}</ion-text>
+
+    <ion-icon [ios]="'close-circle-outline'" [md]="'close-circle-sharp'" color="light" (click)="closeSearch()"></ion-icon>
+    
+  </ion-list-header>
+
+  <ion-item *ngFor="let items of data" style="margin-top:10px;">
+    <ion-thumbnail slot="start">
+      <img src="https://www.iconpacks.net/icons/2/free-sport-car-icon-1768-thumb.png" alt="car-img">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>
+      Modelo: {{items.nombreModelo}}
+      </h3>
+      <p>
+       #{{items.idModelo}} | Marca: {{items.nombreMarca}}
+      </p>
+    </ion-label>
+  </ion-item>
+
+  <!--********************** Infinite Scroll ******************************************-->
+  <ion-infinite-scroll *ngIf="!hasSearch" threshold="100px" (ionInfinite)="loadMoreData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando mas datos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-item *ngIf="let_end" style="text-align: center;">
+    Ya no hay mas elementos que mostrar.
+  </ion-item>
+<!--********************** Infinite Scroll ******************************************-->
+</ion-list>
+<!-- Items por Busqueda -->
+
+<!-- UpScroll -->
+<div class="upScroll" *ngIf="viewScrollBtn">
+  <ion-icon [ios]="'arrow-up-circle-outline'" [md]="'arrow-up-circle-sharp'" (click)="scrollUp()"></ion-icon>
+</div>
+<!-- UpScroll -->
+</ion-content>
